@@ -1,0 +1,22 @@
+body{
+   background-color:#0073e6;
+}
+.row{
+   min-height:60px;
+}
+.timeLabel, .buttonCol{
+   font-size: larger; 
+   background-color:#80bfff; 
+}
+.pastHour{
+   background-color: #0059b3;
+   color:lightgray;
+}
+.currHour{
+   background-color: #cce6ff;
+   color:black;
+}
+.futureHour{
+   background-color: #e6f2ff;
+   color:black
+}

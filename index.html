@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>TITLE</title>
+
+<!-- **************************************** -->
+<!-- **************************************** -->
+<head>
+
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+   <title>Day Planner</title>
+
+   <!--css links-->
+   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
 </head>
 
 <!-- **************************************** -->
 <!-- **************************************** -->
 <body>
 
+   <div class="container">
 
+      <!--jumbotron-->
+      <div class="jumbotron">
+         <h2 class="text-center">
+            Day Planner
+         </h2>
+
+         <hr>
+
+         <h5 class="text-right"><span id="currDate">xx/xx/xxxx</span></h5>
+         <h5 class="text-right"><span id="currTime">00:00:00</span></h5>
+      </div> <!--jumbotron-->
+
+      <div class="row border-bottom" timeAttr="9">
+         <div class="col-lg-2 text-center font-weight-bold timeLabel">
+            9:00a
+         </div>
+         <div class="col-lg-8 text-left pastHour">
+            text entry 
+         </div> 
+         <div class="col-lg-2 text-center buttonCol">
+            button 
+         </div> 
+      </div>
+
+      <div class="row border-bottom" timeAttr="10">
+         <div class="col-lg-2 text-center font-weight-bold timeLabel">
+            10:00a
+         </div>
+         <div class="col-lg-8 text-left currHour">
+            text entry 
+         </div> 
+         <div class="col-lg-2 text-center buttonCol">
+            button 
+         </div> 
+      </div>
+
+      <div class="row border-bottom" timeAttr="11">
+         <div class="col-lg-2 text-center font-weight-bold timeLabel">
+            11:00a
+         </div>
+         <div class="col-lg-8 text-left futureHour">
+            text entry 
+         </div>
+         <div class="col-lg-2 text-center buttonCol">
+            button 
+         </div> 
+      </div>
+
+
+
+
+
+
+
+
+
+
+   </div> <!-- container-->
+
+   <!--**************************************-->
+   <!--js links-->
+   <!--**************************************-->
+   <script src="https://code.jquery.com/jquery.js"></script>
+   <script src="./assets/script/myUtilities.js"></script>
+   <script src="./assets/script/data.js"></script>
+   <script src="./assets/script/script.js"></script>
 
 <!-- **************************************** -->
 <!-- **************************************** -->
-
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
 </body>
 </html>
 
