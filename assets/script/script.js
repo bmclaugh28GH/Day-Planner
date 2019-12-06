@@ -13,22 +13,22 @@ var currHour = 0;
 // **********************************************
 
 // **********************************************
-// change the class of any hour in the past  
+// change the class of any hour, at start or hour change   
 // **********************************************
 function reclassifyHour (h, how) {
 
-   //console.log ("reclassifying hour " + h + " to " + how);
-   var rowElemStr = '.row[timeAttr="' + h + '"]';
-   //var rowElem = $('.row');
-   var rowElem = $(rowElemStr);
-   console.log (rowElem); 
-
-   rowElem.removeClass ("currHour futureHour, pastHour"); 
-   if (how=='past') {
-      rowElem.addClass ("pastHour"); 
-   }
-   if (how=='future'){
-      rowElem.addClass ("futureHour");
+   var myCol = $(".timeAttr"+h).children(".textEntry");  
+   myCol.removeClass ("currHour futureHour pastHour"); 
+   switch(how){
+      case 'past':
+         myCol.addClass("pastHour"); 
+         break;
+      case 'future':
+         myCol.addClass("futureHour");
+         break;
+      case 'current':
+         myCol.addClass('currHour');
+         break;
    }
 
 } // reclassifyPastHour
@@ -52,8 +52,15 @@ function startTimer () {
     clearInterval(interval); 
     interval = setInterval(function() {
         renderCurrTime();
+
+        var nextHour = new Date ().getHours(); 
+        if (nextHour > currHour){
+            reclassifyHour(currHour,'past'); 
+            reclassifyHour(nextHour,'current'); 
+        };
+
     }, 1000);
-} // startTimer
+};  // startTimer
 
 
 // **********************************************
@@ -62,18 +69,22 @@ function startTimer () {
 function init () {
 
    var today = new Date (); 
-   hour = today.getHours(); 
-   currDateElem.text (today.getMonth() + '/' + today.getDate() + '/' + today.getFullYear()); 
+   currHour = today.getHours(); 
+   console.log (today);    
+   //hour = 10; //
+   currDateElem.text ((parseInt (today.getMonth()) + 1) + '/' + today.getDate() + '/' + today.getFullYear()); 
 
    for (i=0; i<hourList.length;i++){
-      if (hourList[i]<hour){
-         reclassifyHour(i, 'past'); 
+      if (hourList[i]<currHour){
+         reclassifyHour(hourList[i], 'past'); 
       } 
-      else if (hourList[i]>hour){
-         reclassifyHour(i, 'future'); 
+      else if (hourList[i]>currHour){
+         reclassifyHour(hourList[i], 'future'); 
+      } 
+      else if (hourList[i]=currHour){
+         reclassifyHour(hourList[i], 'current'); 
       }
-   }
-
+   }; 
 
    startTimer (); 
 
@@ -82,6 +93,9 @@ function init () {
 // **********************************************
 // listeners
 // **********************************************
+$("#saveBtn").on("click", function () {
+   alert ("hi"); 
+}); 
 
 // **********************************************
 // main

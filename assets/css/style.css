@@ -1,6 +1,9 @@
 body{
    background-color:#0073e6;
 }
+.jumbotron{
+   background-color: #e6f2ff;
+}
 .row{
    min-height:60px;
 }
@@ -13,10 +16,18 @@ body{
    color:lightgray;
 }
 .currHour{
-   background-color: #cce6ff;
+   background-color:#e6f2ff;
    color:black;
 }
 .futureHour{
-   background-color: #e6f2ff;
+   background-color: #cce6ff;
+;
    color:black
+}
+button{
+   background-color: #00b3b3;
+   color: #e6f2ff; 
+}
+.form-control{
+   background-color: inherit;
 }
