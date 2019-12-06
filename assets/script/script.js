@@ -7,6 +7,8 @@ var currTimeElem = $("#currTime");
 var currDateElem = $("#currDate"); 
 
 var currHour = 0; 
+var dayArray = []; 
+var dayJSON; 
 
 // **********************************************
 // functions
@@ -70,7 +72,7 @@ function init () {
 
    var today = new Date (); 
    currHour = today.getHours(); 
-   console.log (today);    
+   //console.log (today);    
    //hour = 10; //
    currDateElem.text ((parseInt (today.getMonth()) + 1) + '/' + today.getDate() + '/' + today.getFullYear()); 
 
@@ -94,7 +96,19 @@ function init () {
 // listeners
 // **********************************************
 $("#saveBtn").on("click", function () {
-   alert ("hi"); 
+
+   dayStr = ''; 
+   var dayEntry; 
+   for (i=0;i<hourList.length;i++){
+      dayEntry = $.trim($(".timeAttr"+hourList[i]).children(".textEntry").children(".form-control").val());  
+
+      dayJSON=JSON.parse('{"hour":"' + hourList[i] + '", "entry":"' + dayEntry + '"}');
+      dayArray.push(dayJSON); 
+   }
+   var dayStr = JSON.stringify(dayArray);
+   console.log(dayStr);
+   localStorage.setItem("day-planner-" + currDateElem.text(), dayStr); 
+
 }); 
 
 // **********************************************
