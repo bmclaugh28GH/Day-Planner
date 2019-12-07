@@ -5,6 +5,7 @@
 var interval;  
 var currTimeElem = $("#currTime"); 
 var currDateElem = $("#currDate"); 
+var timeAttrElemList = $(".timeAttr");
 
 var currHour = 0; 
 var dayArray = []; 
@@ -70,12 +71,12 @@ function startTimer () {
 // **********************************************
 function init () {
 
+   // set date element to today
    var today = new Date (); 
    currHour = today.getHours(); 
-   //console.log (today);    
-   //hour = 10; //
    currDateElem.text ((parseInt (today.getMonth()) + 1) + '/' + today.getDate() + '/' + today.getFullYear()); 
 
+   // mark the hour BGs for past, current, future 
    for (i=0; i<hourList.length;i++){
       if (hourList[i]<currHour){
          reclassifyHour(hourList[i], 'past'); 
@@ -88,6 +89,23 @@ function init () {
       }
    }; 
 
+   // check for data in localStorage. load if I find anything 
+   var dayStr = localStorage.getItem("day-planner-" + currDateElem.text()); 
+   var dayEntryList = JSON.parse(dayStr); 
+
+   //for (i=0; i<dayEntryList.length; i++){
+   for (i=0; i<dayEntryList.length; i++){
+
+      //console.log (dayEntryList[i].entry); 
+
+      var fcStr = ".fc"+dayEntryList[i].hour
+      //console.log(fcStr);
+      var formControlElem = $(fcStr); 
+      //console.log (formControlElem);
+      formControlElem.val(dayEntryList[i].entry);  
+   }
+
+   // start timer, which will update the seconds on the clock 
    startTimer (); 
 
 }; // init 
