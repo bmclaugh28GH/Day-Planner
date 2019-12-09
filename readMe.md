@@ -10,6 +10,6 @@ The page must list a 9 hour window, 9a - 5p, and allow the user to enter a text 
 
 I aspire for this to allow user-selected days, or, at least, to be day aware when storing/retrieving. I'm hoping to add a date picker to the page, and maybe to store each set of hours' data by day in local storage. Like, the key part of the key-value pair could be day-planner-12-5-2019, or whatever. 
 
-Why's there a SAVE button on every row. I'm going to try putting one save button at the top, and gather all hour data at the same time. That means I need the jumbotron to be fixed, I think, which maybe it already is. 
+Why's there a SAVE button on every row, I wonder? I'm going to try putting one save button at the top, and gather all hour data at the same time. That means I need the jumbotron to be fixed, I think, which maybe it already is. 
 
 
