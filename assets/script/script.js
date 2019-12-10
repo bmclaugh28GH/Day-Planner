@@ -42,9 +42,9 @@ function reclassifyHour (h, how) {
 function renderCurrTime () {
 
    //console.log ("render"); 
-   var today = new Date (); 
-   var timeText = getTimeStr (today); 
-   currTimeElem.text(timeText);
+   //var today = new Date (); 
+   //var timeText = getTimeStr (today); 
+   currTimeElem.text(moment().format ('HH:mm:ss'));
 } // renderCurrTime
 
 // **********************************************
@@ -71,10 +71,12 @@ function startTimer () {
 // **********************************************
 function init () {
 
+   //alert (moment().format('SS'));
+
    // set date element to today
-   var today = new Date (); 
-   currHour = today.getHours(); 
-   currDateElem.text ((parseInt (today.getMonth()) + 1) + '/' + today.getDate() + '/' + today.getFullYear()); 
+   //var today = new Date (); 
+   currHour = moment().format('HH'); 
+   currDateElem.text (moment().format('MM/DD/YYYY')); 
 
    // mark the hour BGs for past, current, future 
    for (i=0; i<hourList.length;i++){
@@ -91,18 +93,19 @@ function init () {
 
    // check for data in localStorage. load if I find anything 
    var dayStr = localStorage.getItem("day-planner-" + currDateElem.text()); 
-   var dayEntryList = JSON.parse(dayStr); 
+   if (dayStr == null || dayStr == "") {
+      alert ("no previous input")
+   }
+   else {
+      console.log("day-planner-" + currDateElem.text()); 
+      var dayEntryList = JSON.parse(dayStr); 
 
-   //for (i=0; i<dayEntryList.length; i++){
-   for (i=0; i<dayEntryList.length; i++){
+      for (i=0; i<dayEntryList.length; i++){
 
-      //console.log (dayEntryList[i].entry); 
-
-      var fcStr = ".fc"+dayEntryList[i].hour
-      //console.log(fcStr);
-      var formControlElem = $(fcStr); 
-      //console.log (formControlElem);
-      formControlElem.val(dayEntryList[i].entry);  
+         var fcStr = ".fc"+dayEntryList[i].hour
+         var formControlElem = $(fcStr); 
+         formControlElem.val(dayEntryList[i].entry);  
+      }
    }
 
    // start timer, which will update the seconds on the clock 

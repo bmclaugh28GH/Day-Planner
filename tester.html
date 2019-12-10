@@ -3,31 +3,25 @@
 
    <head>
       <title>tmp</title>
-   	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    	<link rel="stylesheet" href="//jqueryui.com/jquery-wp-content/themes/jquery/css/base.css?v=1">
-	   <link rel="stylesheet" href="//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
-
-	   <link rel="stylesheet" href="/resources/demos/style.css">
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
    </head>
 
    <body>
    
-      <p>Date: <input type="text" id="datepicker"></p>
-
-	   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script type="text/javascript" src="./assets/script/myUtilities.js"></script>
-      <script type="text/javascript" src="./assets/script/data.js"></script>
+     <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <script src="./assets/script/myUtilities.js"></script>
+      <script src="./assets/script/data.js"></script>
 	   <script>
-   	   $( function() {
-	      	$( "#datepicker" ).datepicker();
-	      } );
-
          var today = new Date (); 
          var str = getTimeStr (today); 
          console.log(str); 
 
-         console.log(timeList); 
+         alert(moment().format ('MM/DD/YYYY')); 
+         alert(moment().format ('SS')); 
+         alert(moment().format ('HH:mm:ss')); 
+         
 
 	   </script>
    </body>
